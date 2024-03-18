@@ -30,6 +30,7 @@ private:
     Node<T> *tail;
     int numElements;
 
+public:
     /**
      * Returns the pos'th node in the list.
      */
@@ -44,7 +45,6 @@ private:
         return temp;
     }
 
-public:
     // Constructor
     DoublyLinkedList() {
         head = nullptr;

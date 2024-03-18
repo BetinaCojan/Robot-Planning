@@ -13,8 +13,8 @@
 template <typename T>
 class ResizableArray {
 private:
-    int defaultCapacity = 5;
-    int expandFactor = 2;
+    int defaultCapacity;
+    int expandFactor;
 
     int numElements;
     int maxCapacity;
@@ -26,6 +26,9 @@ public:
         numElements = 0;
         maxCapacity = defaultCapacity;
 
+        defaultCapacity = 5;
+        expandFactor = 2;
+
         data = new T[maxCapacity];
     }
 
@@ -33,6 +36,9 @@ public:
     ResizableArray(int initialCapacity) {
         numElements = 0;
         maxCapacity = initialCapacity;
+
+        defaultCapacity = 5;
+        expandFactor = 2;
 
         data = new T[maxCapacity];
     }
@@ -42,6 +48,9 @@ public:
         numElements = 0;
         maxCapacity = initialCapacity;
         expandFactor = defaultFactor;
+
+        defaultCapacity = 5;
+        expandFactor = 2;
 
         data = new T[maxCapacity];
     }
@@ -127,6 +136,19 @@ public:
         delete[] data;
         data = newData;
 
+    }
+
+    /**
+     * Returns the last element of the array without removing it.
+     * Peek implementation
+     *
+     * @return Reference to the last element stored in the array.
+     */
+    T& getLast() {
+        if(isEmpty()) {
+            std::cerr << "The list is empty";
+        }
+        return data[numElements - 1];
     }
 
     // Getters & Setters
